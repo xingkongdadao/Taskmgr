@@ -2,10 +2,12 @@ import {NgModule, Optional, SkipSelf} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MdButtonModule, MdIconModule, MdToolbarModule} from '@angular/material';
 
+
 import {CoreRoutingModule} from './core-routing.module';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {SidebarComponent} from './sidebar/sidebar.component';
+import {HttpModule} from '@angular/http';
 
 @NgModule({
   imports: [
@@ -14,6 +16,7 @@ import {SidebarComponent} from './sidebar/sidebar.component';
     MdToolbarModule,
     MdIconModule,
     MdButtonModule,
+    HttpModule,
   ],
   declarations: [
     HeaderComponent,

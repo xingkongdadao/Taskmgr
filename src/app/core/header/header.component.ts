@@ -1,4 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {MdIconRegistry} from '@angular/material';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +11,8 @@ export class HeaderComponent implements OnInit {
   // 定义事件
   @Output() toggle = new EventEmitter<void>();
 
-  constructor() {
+  constructor(iconRegistry: MdIconRegistry, sanitier: DomSanitizer) {
+    iconRegistry.addSvgIcon('gifts', sanitier.bypassSecurityTrustResourceUrl('assets/gifts.svg'));
   }
 
   ngOnInit() {
