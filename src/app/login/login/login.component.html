@@ -1,21 +1,38 @@
-<md-card>
-  <md-card-header>
-    <md-card-title>登录</md-card-title>
-  </md-card-header>
-  <md-card-content>
-    <md-input-container align="end" color="accent" floatPlaceholder="float" hintLabel="必填项">
-      <span mdPrefix>bigrollers</span>
-      <input mdInput type="text" placeholder="您的email">
-      <span mdSuffix>@gmail.com</span>
-      <md-hint></md-hint>
-      <md-error></md-error>
+<form>
+  <md-card>
+    <md-card-header>
+      <md-card-title>登录</md-card-title>
+    </md-card-header>
+    <md-card-content >
+      <md-input-container color="accent" class="full-width">
+        <input mdInput type="text" placeholder="您的邮箱">
+      </md-input-container>
+      <md-input-container color="accent" class="full-width">
+        <input mdInput type="text" placeholder="您的密码">
+      </md-input-container>
+      <button md-raised-button type="button">登录</button>
+    </md-card-content>
 
-    </md-input-container>
-  </md-card-content>
+    <md-card-actions class="text-right">
+      <p>还没有账户？<a href="">注册</a></p>
+      <p>忘记密码？<a href="">找回</a></p>
 
-  <md-card-actions>
-    <p>还没有账户？<a href="">注册</a></p>
-    <p>忘记密码？<a href="">找回</a></p>
+    </md-card-actions>
+  </md-card>
+  <md-card>
+    <md-card-header>
+      <md-card-title>每日佳句</md-card-title>
+      <md-card-subtitle>
+        满足感在于不断的努力，而不是现有成就。全力努力定会胜利满满。
+      </md-card-subtitle>
 
-  </md-card-actions>
-</md-card>
+    </md-card-header>
+    <img md-card-image height="260em" src="/assets/hotchilly.jpg" alt="">
+    <md-card-content >
+      tisfaction lies in the effort, not in the attainment. Full effort is full victory.
+    </md-card-content>
+
+    <md-card-actions >    </md-card-actions>
+  </md-card>
+
+</form>
