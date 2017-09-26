@@ -1,16 +1,34 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {
+  MdButtonModule,
+  MdIconModule,
+  MdToolbarModule,
+  MdCardModule,
+  MdInputModule,
+} from '@angular/material';
 
-import { SharedRoutingModule } from './shared-routing.module';
+import {SharedRoutingModule} from './shared-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    SharedRoutingModule
+    SharedRoutingModule,
+    MdToolbarModule,
+    MdIconModule,
+    MdButtonModule,
+    MdCardModule,
+    MdInputModule,
   ],
   exports: [
-    CommonModule
+    CommonModule,
+    MdToolbarModule,
+    MdIconModule,
+    MdButtonModule,
+    MdCardModule,
+    MdInputModule,
   ],
   declarations: []
 })
-export class SharedModule { }
+export class SharedModule {
+}

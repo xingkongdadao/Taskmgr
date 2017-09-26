@@ -1,9 +1,7 @@
 import {NgModule, Optional, SkipSelf} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {MdButtonModule, MdIconModule, MdToolbarModule} from '@angular/material';
 import {MdIconRegistry} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
-
+import {SharedModule} from '../shared/shared.module';
 
 import {CoreRoutingModule} from './core-routing.module';
 import {HeaderComponent} from './header/header.component';
@@ -12,14 +10,16 @@ import {SidebarComponent} from './sidebar/sidebar.component';
 import {HttpModule} from '@angular/http';
 import {loadSvgResources} from '../utils/svg.util';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CommonModule} from '@angular/common';
+
 @NgModule({
   imports: [
     CommonModule,
     CoreRoutingModule,
-    MdToolbarModule,
-    MdIconModule,
-    MdButtonModule,
     HttpModule,
+    SharedModule,
+    BrowserAnimationsModule,
   ],
   declarations: [
     HeaderComponent,
