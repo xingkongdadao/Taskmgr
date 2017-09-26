@@ -1,6 +1,6 @@
 import {NgModule, Optional, SkipSelf} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MdToolbarModule} from '@angular/material';
+import {MdButtonModule, MdIconModule, MdToolbarModule} from '@angular/material';
 
 import {CoreRoutingModule} from './core-routing.module';
 import {HeaderComponent} from './header/header.component';
@@ -12,6 +12,8 @@ import {SidebarComponent} from './sidebar/sidebar.component';
     CommonModule,
     CoreRoutingModule,
     MdToolbarModule,
+    MdIconModule,
+    MdButtonModule,
   ],
   declarations: [
     HeaderComponent,
