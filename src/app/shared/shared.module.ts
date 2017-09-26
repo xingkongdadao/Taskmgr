@@ -6,6 +6,7 @@ import {
   MdToolbarModule,
   MdCardModule,
   MdInputModule,
+  MdListModule,
 } from '@angular/material';
 
 import {SharedRoutingModule} from './shared-routing.module';
@@ -19,6 +20,7 @@ import {SharedRoutingModule} from './shared-routing.module';
     MdButtonModule,
     MdCardModule,
     MdInputModule,
+    MdListModule,
   ],
   exports: [
     CommonModule,
@@ -27,6 +29,8 @@ import {SharedRoutingModule} from './shared-routing.module';
     MdButtonModule,
     MdCardModule,
     MdInputModule,
+    MdListModule,
+
   ],
   declarations: []
 })
