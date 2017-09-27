@@ -5,6 +5,8 @@ import {MdSidenavModule} from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {CoreModule} from './core/core.module';
+import {LoginModule} from './login/login.module';
+import {ProjectModule} from './project/project.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import {CoreModule} from './core/core.module';
     BrowserModule,
     CoreModule,
     MdSidenavModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LoginModule,
+    ProjectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
