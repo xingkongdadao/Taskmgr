@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-
+//系统內建主题
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+//自建主题
+//@import "theme.scss";
 
 html, body, app-root, md-sidenav-container, .site {
   width:100%;
