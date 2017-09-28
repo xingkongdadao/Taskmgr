@@ -1,3 +1,33 @@
-<p>
-  invite works!
-</p>
+<form>
+  <h2 md-dialog-title="">邀请组员</h2>
+  <div md-dialog-content>
+    <md-input-container class="full-width">
+      <!--添加 [mdAutocomplete]="autoMembers"指令，来指向md-autocomplete，实现自动填充-->
+      <input mdInput type="text" placeholder="组员姓名" [mdAutocomplete]="autoMembers">
+    </md-input-container>
+
+  </div>
+  <div md-dialog-actions>
+    <!--书写onClick（）事件，处理窗口数据-->
+    <button type="button" md-raised-button color="primary" (click)="onClick()">保存</button>
+    <button type="button" md-button md-dialog-close>关闭</button>
+  </div>
+</form>
+<!--为了在选中item之后，input中显示item.name, 需要添加[displayWith]="displayUser， 其中displayUser是一个函数，而不是一个函数结果，在.ts文件中设置完成。-->
+<md-autocomplete #autoMembers="mdAutocomplete" [displayWith]="displayUser">
+  <!--循环出items,并将选择中的item赋值给value-->
+  <md-option *ngFor="let item of items" [value] = "item">
+    {{item.name}}
+  </md-option>
+</md-autocomplete>
+
+
+
+
+
+
+
+
+
+
+

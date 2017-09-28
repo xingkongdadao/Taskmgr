@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 // 导入MdDialog
 import {MdDialog} from '@angular/material';
 import {NewProjectComponent} from '../new-project/new-project.component';
+import {InviteComponent} from "../invite/invite.component";
 
 @Component({
   selector: 'app-project-list',
@@ -39,6 +40,13 @@ export class ProjectListComponent implements OnInit {
     // 处理返回的数据,打印到控制台。afterClosed()是Rx的一个可观察对象。然后用订阅方法输出出来。或者是想做的任何操作。
 
     dialogRef.afterClosed().subscribe(result => console.log(result));
+  }
+
+  launchInviteDialog() {
+    // 打开对话框组件InviteComponent,不需要传入数据。
+    const dialogRef = this.dialog.open(InviteComponent);
+    // dialogRef.afterClosed().subscribe(result => console.log(result));
+
   }
 }
 
