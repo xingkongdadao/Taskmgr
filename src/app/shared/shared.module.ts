@@ -7,7 +7,7 @@ import {
   MdCardModule,
   MdInputModule,
   MdListModule,
-  MdGridListModule, MdDialogModule, MdAutocompleteModule,
+  MdGridListModule, MdDialogModule, MdAutocompleteModule, MdMenuModule,
 } from '@angular/material';
 
 import {SharedRoutingModule} from './shared-routing.module';
@@ -25,6 +25,7 @@ import {SharedRoutingModule} from './shared-routing.module';
     MdGridListModule,
     MdDialogModule,
     MdAutocompleteModule,
+    MdMenuModule,
   ],
   exports: [
     CommonModule,
@@ -37,6 +38,7 @@ import {SharedRoutingModule} from './shared-routing.module';
     MdGridListModule,
     MdDialogModule,
     MdAutocompleteModule,
+    MdMenuModule,
   ],
   declarations: []
 })

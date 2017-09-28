@@ -1,0 +1,51 @@
+<div md-subheader class="header-container">
+  <!--第一部分：标题-->
+  <div><h3>{{header}}</h3></div>
+  <!--第二部分：新建任务-->
+  <div class="fill">
+    <button md-button>
+      <md-icon>add_circle_outline</md-icon>
+      <span>新任务</span>
+    </button>
+  </div>
+  <!--第三部分：下拉菜单-->
+  <div>
+    <!--下拉菜单，通过指令把下拉菜单关联起来-->
+    <button md-icon-button [mdMenuTriggerFor]="menu">
+      <md-icon>keyboard_arrow_down</md-icon>
+    </button>
+  </div>
+
+</div>
+
+<!--下拉菜单-->
+<md-menu #menu="mdMenu">
+  <!--菜单一-->
+  <button md-menu-item>
+    <md-icon>menu</md-icon>
+    <span>修改列表名称</span>
+  </button>
+  <!--菜单二-->
+  <button md-menu-item>
+    <md-icon>delete_forever</md-icon>
+    <span>移动本列表所有内容</span>
+  </button>
+  <!--菜单三-->
+  <button md-menu-item>
+    <md-icon>delete_forever</md-icon>
+    <span>删除列表</span>
+  </button>
+</md-menu>
+
+
+
+
+
+
+
+
+
+
+
+
+

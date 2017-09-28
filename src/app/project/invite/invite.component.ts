@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-invite',
@@ -21,14 +21,18 @@ export class InviteComponent implements OnInit {
       name: 'wangwu',
     },
   ];
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
-  // 设置自动填充显示的是用户名字
-  displayUser(user: {id: string; name: string}) {
-    return user ? user.name : '';
+  // 保存按钮事件
+  onClick() {  }
 
+  // 设置自动填充显示的是用户名字
+  displayUser(user: { id: string; name: string }) {
+    return user ? user.name : '';
   }
 }
