@@ -249,13 +249,17 @@ export class TaskHomeComponent implements OnInit {
   // 监听到task-header组件发出的newTask输出事件后，执行下面方法。
   launchNewTaskDialog() {
     // 打开新任务对话框组件。在此之前需要将NewTaskComponent组件在Task模块中，加入
-    this.dialog.open(NewTaskComponent);
+    const dialogRef = this.dialog.open(NewTaskComponent, {data: {title: '新建任务'}});
   }
 
   launchCopyTaskDialog() {
     // 打开新任务对话框组件。在此之前需要将NewTaskComponent组件在Task模块中，加入
-    this.dialog.open(CopyTaskComponent, {data: {lists: this.lists}});
+    const dialogRef = this.dialog.open(CopyTaskComponent, {data: {lists: this.lists}});
 
+  }
+
+  launchUpdateTaskDialog(task) {
+    const dialogRef = this.dialog.open(NewTaskComponent, {data: {title: '修改任务', task: task}});
   }
 }
 

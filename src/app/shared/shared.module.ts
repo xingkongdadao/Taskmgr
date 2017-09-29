@@ -20,6 +20,7 @@ import {
 } from '@angular/material';
 
 import {SharedRoutingModule} from './shared-routing.module';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   imports: [
@@ -62,7 +63,7 @@ import {SharedRoutingModule} from './shared-routing.module';
     MdSelectModule,
 
   ],
-  declarations: []
+  declarations: [ConfirmDialogComponent]
 })
 export class SharedModule {
 }

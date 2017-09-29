@@ -1,13 +1,20 @@
 <!--任务条显示-->
 <!--[ngClass] 可以根据条件显示不同的样式-->
+<!--监听md-list-item点击事件-->
 <md-list-item class="container"
               [ngClass]="{
               'priority-normal': item.priority === 3,
               'priority-important': item.priority === 2,
               'priority-emergency': item.priority === 1
-              }">
+              }"
+              (click)="onItemClick()"
+>
   <!--任务选中状态-->
-  <md-checkbox class="status" [checked]="item.completed"></md-checkbox>
+  <md-checkbox
+    class="status"
+    [checked]="item.completed"
+    (click)="onCheckBoxClick($event)"
+  ></md-checkbox>
   <!--任务内容描述-->
   <!--[ngClass]="{'completed': item.completed}" 表示若为真，则加载  .completed-->
   <div md-line class="content" [ngClass]="{'completed': item.completed}">

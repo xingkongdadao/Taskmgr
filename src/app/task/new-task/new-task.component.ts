@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MD_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-new-task',
@@ -6,6 +7,8 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./new-task.component.scss']
 })
 export class NewTaskComponent implements OnInit {
+
+  title = '';
 
   priorities = [
     {
@@ -22,10 +25,16 @@ export class NewTaskComponent implements OnInit {
     },
   ];
 
-  constructor() {
+  constructor(@Inject(MD_DIALOG_DATA) private data) {
   }
 
   ngOnInit() {
+    // 标题赋值
+    this.title = this.data.title;
+
+    // 打印传入的值
+    console.log(JSON.stringify(this.data.task));
+
   }
 
   onClick() {

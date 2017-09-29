@@ -14,6 +14,7 @@ import {MD_DIALOG_DATA, MdDialogRef, OverlayContainer} from '@angular/material';
   styleUrls: ['./new-project.component.scss']
 })
 export class NewProjectComponent implements OnInit {
+  title = '';
   // 在结构中写入@Inject(MD_DIALOG_DATA) private data，就相当于需要传入的数据data已经传进来了。
   // 导出数据则，需要 private dialogRef: MdDialogRef<NewProjectComponent>
   constructor(
@@ -25,6 +26,8 @@ export class NewProjectComponent implements OnInit {
   ngOnInit() {
     // 测试传入的数据
     console.log(JSON.stringify(this.data));
+    // 标题赋值
+    this.title = this.data.title;
   }
 
     // 处理保存按钮事件。

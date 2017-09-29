@@ -11,6 +11,8 @@ export class ProjectItemComponent implements OnInit {
   @Input() item;
   // 让父组件知道这个事件发生了，但是自己不处理事件。
   @Output() onInvite = new EventEmitter<void>();
+  // 创建一个输出事件，
+  @Output() onEdit = new EventEmitter<void>();
 
   constructor() {
   }
@@ -23,6 +25,11 @@ export class ProjectItemComponent implements OnInit {
     this.onInvite.emit();
 
   }
+
+  onEditClick() {
+    // 将事件发射出去，让父组件知道。
+    this.onEdit.emit();
+}
 }
 
 
