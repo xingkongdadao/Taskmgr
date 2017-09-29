@@ -56,6 +56,7 @@ export class ProjectListComponent implements OnInit {
   ngOnInit() {
   }
 
+  // 新建项目按钮对应的事件方法
   openNewProjectDialog() {
     // 对话框默认情况是不支持主题改变的。
     // 打开对话框组件NewProjectComponent,第一个为组件名称，后面为要传入组件的数据,数据可以为任意类型的。
@@ -67,6 +68,7 @@ export class ProjectListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => console.log(result));
   }
 
+  // 邀请按钮对应的事件方法
   launchInviteDialog() {
     // 打开对话框组件InviteComponent,不需要传入数据。
     const dialogRef = this.dialog.open(InviteComponent);
