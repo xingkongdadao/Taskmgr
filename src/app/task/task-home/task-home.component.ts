@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MdDialog} from '@angular/material';
+import {NewTaskComponent} from '../new-task/new-task.component';
 
 @Component({
   selector: 'app-task-home',
@@ -233,12 +235,39 @@ export class TaskHomeComponent implements OnInit {
       ],
     },
   ];
-
-  constructor() { }
+  // 注入一个对话框dialog
+  constructor( private dialog: MdDialog) {
+  }
 
   ngOnInit() {
   }
 
-  openNewProjectDialog() {}
+  openNewProjectDialog() {
+  }
 
+  // 监听到task-header组件发出的newTask输出事件后，执行下面方法。
+  launchNewTaskDialog() {
+    // 打开新任务对话框组件。在此之前需要将NewTaskComponent组件在Task模块中，加入
+    this.dialog.open(NewTaskComponent);
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

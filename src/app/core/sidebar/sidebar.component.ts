@@ -14,7 +14,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.today = 'day' + getDate(new Date());
-    console.log(this.today);
+    // console.log(this.today);
   }
 
 }

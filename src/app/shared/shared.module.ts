@@ -13,6 +13,9 @@ import {
   MdMenuModule,
   MdCheckboxModule,
   MdTooltipModule,
+  MdRadioModule,
+  MdDatepickerModule,
+  MdNativeDateModule,
 } from '@angular/material';
 
 import {SharedRoutingModule} from './shared-routing.module';
@@ -33,6 +36,9 @@ import {SharedRoutingModule} from './shared-routing.module';
     MdMenuModule,
     MdCheckboxModule,
     MdTooltipModule,
+    MdRadioModule,
+    MdDatepickerModule,
+    MdNativeDateModule,
   ],
   exports: [
     CommonModule,
@@ -48,6 +54,9 @@ import {SharedRoutingModule} from './shared-routing.module';
     MdMenuModule,
     MdCheckboxModule,
     MdTooltipModule,
+    MdRadioModule,
+    MdDatepickerModule,
+    MdNativeDateModule,
   ],
   declarations: []
 })

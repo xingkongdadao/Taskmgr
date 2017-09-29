@@ -1,0 +1,73 @@
+<!--新建任务表单窗口-->
+<form>
+  <!--题头-->
+  <h2 md-dialog-title="">新建任务</h2>
+  <!--任务内容-->
+  <div md-dialog-content>
+    <!--任务名称-->
+    <md-input-container class="full-width">
+      <input mdInput type="text" placeholder="任务内容">
+    </md-input-container>
+    <!--任务重要级别-->
+    <md-radio-group>
+      <md-radio-button *ngFor="let priority of priorities" [value]="priority.value">
+        {{priority.label}}
+      </md-radio-button>
+    </md-radio-group>
+    <!--任务截止日期-->
+    <md-input-container class="full-width">
+      <!--关联下面的时间选择框 #dueDatepicker  时间选择框中选中的时间日期会显示在input中-->
+      <input mdInput type="text" [mdDatepicker]="dueDatepicker" placeholder="任务截止日期">
+      <!--在输入框后面加一个日期按钮，通过mdDatepickerToggle关联到日期弹出框，打开时间日期选择框-->
+      <button mdSuffix type="button" [mdDatepickerToggle]="dueDatepicker"></button>
+    </md-input-container>
+    <!--时间选择框，需要由按钮调动-->
+    <md-datepicker #dueDatepicker></md-datepicker>
+    <!--任务提醒日期-->
+    <md-input-container class="full-width">
+      <!--关联下面的时间选择框 #dueDatepicker  时间选择框中选中的时间日期会显示在input中-->
+      <input mdInput type="text" [mdDatepicker]="reminderDatepicker" placeholder="任务提醒日期">
+      <!--在输入框后面加一个日期按钮，通过mdDatepickerToggle关联到日期弹出框，打开时间日期选择框-->
+      <button mdSuffix type="button" [mdDatepickerToggle]="reminderDatepicker"></button>
+    </md-input-container>
+    <!--时间选择框，需要由按钮调动-->
+    <md-datepicker #reminderDatepicker></md-datepicker>
+
+
+  </div>
+  <div md-dialog-actions>
+    <!--书写onClick（）事件，处理窗口数据-->
+    <button type="button" md-raised-button color="primary" (click)="onClick()">保存</button>
+    <button type="button" md-button md-dialog-close>关闭</button>
+  </div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -4,7 +4,8 @@
   <div><h3>{{header}}</h3></div>
   <!--第二部分：新建任务-->
   <div class="fill">
-    <button md-button>
+    <!--监听按钮的click事件-->
+    <button md-button type="button" (click)="onNewTaskClick()">
       <md-icon>add_circle_outline</md-icon>
       <span>新任务</span>
     </button>

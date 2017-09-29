@@ -7,6 +7,7 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { TaskItemComponent } from './task-item/task-item.component';
 import { TaskHeaderComponent } from './task-header/task-header.component';
 import {SharedModule} from '../shared/shared.module';
+import { NewTaskComponent } from './new-task/new-task.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,11 @@ import {SharedModule} from '../shared/shared.module';
     TaskListComponent,
     TaskItemComponent,
     TaskHeaderComponent,
-  ]
+    NewTaskComponent,
+  ],
+  // 加入entryComponents中的组件可以以窗口的形式展现出来。
+  entryComponents: [
+    NewTaskComponent,
+  ],
 })
 export class TaskModule { }
