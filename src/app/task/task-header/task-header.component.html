@@ -1,3 +1,4 @@
+<!--任务列表头部组件，横向排列-->
 <div md-subheader class="header-container">
   <!--第一部分：标题-->
   <div><h3>{{header}}</h3></div>
@@ -10,7 +11,7 @@
   </div>
   <!--第三部分：下拉菜单-->
   <div>
-    <!--下拉菜单，通过指令把下拉菜单关联起来-->
+    <!--下拉菜单，通过 [mdMenuTriggerFor]="menu" 指令把 下拉菜单 关联起来-->
     <button md-icon-button [mdMenuTriggerFor]="menu">
       <md-icon>keyboard_arrow_down</md-icon>
     </button>
@@ -22,12 +23,12 @@
 <md-menu #menu="mdMenu">
   <!--菜单一-->
   <button md-menu-item>
-    <md-icon>menu</md-icon>
+    <md-icon>mode_edit</md-icon>
     <span>修改列表名称</span>
   </button>
   <!--菜单二-->
   <button md-menu-item>
-    <md-icon>delete_forever</md-icon>
+    <md-icon svgIcon="move"></md-icon>
     <span>移动本列表所有内容</span>
   </button>
   <!--菜单三-->

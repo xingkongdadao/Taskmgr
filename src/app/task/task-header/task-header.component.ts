@@ -6,7 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./task-header.component.scss']
 })
 export class TaskHeaderComponent implements OnInit {
-  // 设置header输入属性
+  // 设置header输入属性，接收 。task-home出入的值。
   @Input() header = '';
 
   constructor() { }

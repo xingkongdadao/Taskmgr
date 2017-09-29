@@ -31,7 +31,7 @@ export class TaskHomeComponent implements OnInit {
           owner: {
             id: 1,
             name: '张三',
-            avatar: 'avatars:svg-11'
+            avatar: 'avatars:svg-12'
           },
           dueDate: new Date(),
           reminder: new Date(),
@@ -43,7 +43,7 @@ export class TaskHomeComponent implements OnInit {
           owner: {
             id: 1,
             name: '张三',
-            avatar: 'avatars:svg-11'
+            avatar: 'avatars:svg-13'
           },
           dueDate: new Date(),
           reminder: new Date(),
@@ -62,7 +62,7 @@ export class TaskHomeComponent implements OnInit {
           owner: {
             id: 1,
             name: '张三',
-            avatar: 'avatars:svg-11'
+            avatar: 'avatars:svg-14'
           },
           dueDate: new Date(),
           reminder: new Date(),
@@ -74,7 +74,7 @@ export class TaskHomeComponent implements OnInit {
           owner: {
             id: 1,
             name: '张三',
-            avatar: 'avatars:svg-11'
+            avatar: 'avatars:svg-15'
           },
           dueDate: new Date(),
           reminder: new Date(),
@@ -86,7 +86,7 @@ export class TaskHomeComponent implements OnInit {
           owner: {
             id: 1,
             name: '张三',
-            avatar: 'avatars:svg-11'
+            avatar: 'avatars:svg-16'
           },
           dueDate: new Date(),
           reminder: new Date(),

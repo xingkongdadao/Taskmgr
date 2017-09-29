@@ -1,14 +1,17 @@
+<!--项目卡片，-->
 <md-card>
+  <!--项目标题头-->
   <md-card-header>
     <md-card-title>
       {{item.name}}
     </md-card-title>
   </md-card-header>
-  <!--图片暂时没有，src属性暂时不设置。[src]="item.coverImg"-->
-  <img md-card-image  alt="项目封面">
+  <!--设置项目封面照片-->
+  <img md-card-image [src]="item.coverImg"  alt="项目封面">
   <md-card-content>
     {{item.desc}}
   </md-card-content>
+  <!--项目动作区域-->
   <md-card-actions>
     <button md-button="" type="button">
       <md-icon>note</md-icon>

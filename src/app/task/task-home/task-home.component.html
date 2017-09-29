@@ -1,13 +1,17 @@
+<!--任务根容器，按照项目状态进行分类，然后在每个类别中各自循环出任务列表-->
 <div class="task-lists">
+  <!--按照项目完成状态，循环出任务列表-->
   <app-task-list class="list-container" *ngFor="let list of lists">
+    <!--任务列表题头-->
     <app-task-header [header]="list.name"></app-task-header>
-    <app-task-item *ngFor="let task of list.tasks" [item]="task" >
-
-    </app-task-item>
+    <!--循环出任务列表-->
+    <app-task-item *ngFor="let task of list.tasks" [item]="task" ></app-task-item>
   </app-task-list>
 </div>
 
-<!--新建项目按钮-->
+<!--新建任务按钮，
+该按钮是独立于任务列表的，单独放置在屏幕右下方
+-->
 <button class="fab-button" md-fab type="button" (click)="openNewProjectDialog()">
   <md-icon>add</md-icon>
 </button>

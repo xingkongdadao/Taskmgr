@@ -7,7 +7,7 @@ import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
   styleUrls: ['./project-item.component.scss']
 })
 export class ProjectItemComponent implements OnInit {
-
+  // 输入属性，接受项目列表传过来的单个项目信息
   @Input() item;
   // 让父组件知道这个事件发生了，但是自己不处理事件。
   @Output() onInvite = new EventEmitter<void>();

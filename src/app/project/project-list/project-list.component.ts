@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 // 导入MdDialog
 import {MdDialog} from '@angular/material';
 import {NewProjectComponent} from '../new-project/new-project.component';
-import {InviteComponent} from "../invite/invite.component";
+import {InviteComponent} from '../invite/invite.component';
 
 @Component({
   selector: 'app-project-list',
@@ -14,12 +14,37 @@ export class ProjectListComponent implements OnInit {
     {
       'name': '企业协作平台',
       'desc': '这是一个企业内部项目',
-      // 'coverImg': 'assets/img/covers/0.jpg'
+      'coverImg': 'assets/img/covers/0.jpg'
     },
     {
       'name': '企业协作平台',
       'desc': '这是一个企业内部项目',
-      // 'coverImg': 'assets/img/covers/0.jpg'
+      'coverImg': 'assets/img/covers/0.jpg'
+    },
+    {
+      'name': '企业协作平台',
+      'desc': '这是一个企业内部项目',
+      'coverImg': 'assets/img/covers/0.jpg'
+    },
+    {
+      'name': '企业协作平台',
+      'desc': '这是一个企业内部项目',
+      'coverImg': 'assets/img/covers/0.jpg'
+    },
+    {
+      'name': '企业协作平台',
+      'desc': '这是一个企业内部项目',
+      'coverImg': 'assets/img/covers/0.jpg'
+    },
+    {
+      'name': '企业协作平台',
+      'desc': '这是一个企业内部项目',
+      'coverImg': 'assets/img/covers/0.jpg'
+    },
+    {
+      'name': '企业协作平台',
+      'desc': '这是一个企业内部项目',
+      'coverImg': 'assets/img/covers/0.jpg'
     },
 
   ];

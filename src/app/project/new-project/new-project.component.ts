@@ -19,7 +19,7 @@ export class NewProjectComponent implements OnInit {
   constructor(
     @Inject(MD_DIALOG_DATA) private data,
     private dialogRef: MdDialogRef<NewProjectComponent>,
-    private oc: OverlayContainer,
+    // private oc: OverlayContainer, 在app.component中设置全局了，这里就不需要了
     ) { }
 
   ngOnInit() {
