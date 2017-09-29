@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MdDialog} from '@angular/material';
 import {NewTaskComponent} from '../new-task/new-task.component';
+import {CopyTaskComponent} from '../copy-task/copy-task.component';
 
 @Component({
   selector: 'app-task-home',
@@ -249,6 +250,12 @@ export class TaskHomeComponent implements OnInit {
   launchNewTaskDialog() {
     // 打开新任务对话框组件。在此之前需要将NewTaskComponent组件在Task模块中，加入
     this.dialog.open(NewTaskComponent);
+  }
+
+  launchCopyTaskDialog() {
+    // 打开新任务对话框组件。在此之前需要将NewTaskComponent组件在Task模块中，加入
+    this.dialog.open(CopyTaskComponent, {data: {lists: this.lists}});
+
   }
 }
 

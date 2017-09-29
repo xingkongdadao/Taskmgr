@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-new-task',
@@ -22,9 +22,14 @@ export class NewTaskComponent implements OnInit {
     },
   ];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  onClick() {
+
   }
 
 }

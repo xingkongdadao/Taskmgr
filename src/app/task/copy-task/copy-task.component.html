@@ -1,0 +1,49 @@
+<!--新建任务表单窗口-->
+<form>
+  <!--题头-->
+  <h2 md-dialog-title="">移动本列表所有内容</h2>
+  <!--任务内容-->
+  <div md-dialog-content>
+    <!--任务类型下拉框选择-->
+    <md-select placeholder="请选择目标列表">
+      <md-option *ngFor="let list of lists">{{list.name}}</md-option>
+    </md-select>
+
+  </div>
+  <div md-dialog-actions>
+    <!--书写onClick（）事件，处理窗口数据-->
+    <button type="button" md-raised-button color="primary" (click)="onClick()">保存</button>
+    <button type="button" md-button md-dialog-close>关闭</button>
+  </div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

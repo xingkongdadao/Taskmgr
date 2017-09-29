@@ -16,6 +16,7 @@ import {
   MdRadioModule,
   MdDatepickerModule,
   MdNativeDateModule,
+  MdSelectModule,
 } from '@angular/material';
 
 import {SharedRoutingModule} from './shared-routing.module';
@@ -39,6 +40,7 @@ import {SharedRoutingModule} from './shared-routing.module';
     MdRadioModule,
     MdDatepickerModule,
     MdNativeDateModule,
+    MdSelectModule,
   ],
   exports: [
     CommonModule,
@@ -57,6 +59,8 @@ import {SharedRoutingModule} from './shared-routing.module';
     MdRadioModule,
     MdDatepickerModule,
     MdNativeDateModule,
+    MdSelectModule,
+
   ],
   declarations: []
 })

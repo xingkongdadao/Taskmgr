@@ -28,7 +28,8 @@
     <span>修改列表名称</span>
   </button>
   <!--菜单二-->
-  <button md-menu-item>
+  <!--调出CopyTaskComponent组件窗口 (click)="onMoveAllClick()-->
+  <button md-menu-item (click)="onMoveAllClick()">
      <!--添加 class="material-icon"  让图标和文字对齐-->
     <md-icon svgIcon="move" class="material-icon"></md-icon>
     <span>移动本列表所有内容</span>

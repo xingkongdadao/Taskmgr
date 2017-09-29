@@ -4,7 +4,13 @@
   <app-task-list class="list-container" *ngFor="let list of lists">
     <!--任务列表题头-->
     <!--监听task-header组件发出的事件属性，并用launchNewTaskDialog()对事件作出响应-->
-    <app-task-header [header]="list.name" (newTask)="launchNewTaskDialog()"></app-task-header>
+    <!--监听task-header组件发出的事件属性，并用launchCopyTaskDialog()对事件作出响应-->
+
+    <app-task-header
+      [header]="list.name"
+      (newTask)="launchNewTaskDialog()"
+      (moveAll)="launchCopyTaskDialog()"
+    ></app-task-header>
     <!--循环出任务列表-->
     <app-task-item *ngFor="let task of list.tasks" [item]="task" ></app-task-item>
   </app-task-list>
