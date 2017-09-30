@@ -1,7 +1,9 @@
 <!--任务条显示-->
 <!--[ngClass] 可以根据条件显示不同的样式-->
 <!--监听md-list-item点击事件-->
+<!-- 3 动画里面的触发器  @item  赋值-->
 <md-list-item class="container"
+              [@item]="widerPriority"
               [ngClass]="{
               'priority-normal': item.priority === 3,
               'priority-important': item.priority === 2,

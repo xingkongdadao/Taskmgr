@@ -8,13 +8,14 @@
       <app-header (toggle)="sidenav.toggle()"></app-header>
     </header>
     <main>
+
+      <router-outlet></router-outlet>
+
       <!--先屏蔽路由插座，以便演示动画-->
-      <!--<router-outlet></router-outlet>-->
-
       <!--在想要应用动画的地方添加触发器，[@square]="squareState"-->
-      <div class="square" [@square]="squareState" (click)="onClick()">
+      <!--<div class="square" [@square]="squareState" (click)="onClick()">-->
 
-      </div>
+      <!--</div>-->
     </main>
     <footer>
       <app-footer></app-footer>
