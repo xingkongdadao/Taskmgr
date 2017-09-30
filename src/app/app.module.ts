@@ -22,7 +22,7 @@ import {ProjectModule} from './project/project.module';
     AppRoutingModule,
     LoginModule,
     ProjectModule,
-    BrowserAnimationsModule,  // 动画模块,最好最后导入
+    BrowserAnimationsModule,  // 动画模块,最好最后
   ],
   providers: [],
   bootstrap: [AppComponent]

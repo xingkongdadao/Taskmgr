@@ -1,16 +1,25 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 // 导入MdDialog
 import {MdDialog} from '@angular/material';
 import {NewProjectComponent} from '../new-project/new-project.component';
 import {InviteComponent} from '../invite/invite.component';
 import {ConfirmDialogComponent} from '../../shared/confirm-dialog/confirm-dialog.component';
+// 导入路由动画
+import {slideToRight} from '../../anims/router.anim';
 
 @Component({
   selector: 'app-project-list',
   templateUrl: './project-list.component.html',
-  styleUrls: ['./project-list.component.scss']
+  styleUrls: ['./project-list.component.scss'],
+  animations: [
+    slideToRight, // 1  添加动画触发器
+  ]
+
 })
 export class ProjectListComponent implements OnInit {
+
+  @HostBinding('@routeAnim') state;
+
   projects = [
     {
       'name': '企业协作平台',
@@ -81,6 +90,7 @@ export class ProjectListComponent implements OnInit {
   launchUpdateDialog(project) {
     const dialogRef = this.dialog.open(NewProjectComponent, {data: {title: '编辑项目', project: project}});
   }
+
   // 点击确认输出事件执行方法
   launchConfirmDialog(project) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {data: {title: '删除项目', content: '您确认删除该项目吗？'}});
