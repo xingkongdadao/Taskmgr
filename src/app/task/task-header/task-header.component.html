@@ -23,7 +23,7 @@
 <!--下拉菜单-->
 <md-menu #menu="mdMenu">
   <!--菜单一-->
-  <button md-menu-item>
+  <button md-menu-item (click)="onEditListClick()">
     <md-icon>mode_edit</md-icon>
     <span>修改列表名称</span>
   </button>
@@ -35,7 +35,7 @@
     <span>移动本列表所有内容</span>
   </button>
   <!--菜单三-->
-  <button md-menu-item>
+  <button md-menu-item (click)="onDelListClick()">
     <md-icon>delete_forever</md-icon>
     <span>删除列表</span>
   </button>

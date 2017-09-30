@@ -13,6 +13,8 @@ export class ProjectItemComponent implements OnInit {
   @Output() onInvite = new EventEmitter<void>();
   // 创建一个输出事件，
   @Output() onEdit = new EventEmitter<void>();
+  // 创建一个删除输出事件
+  @Output() onDel = new EventEmitter<void>();
 
   constructor() {
   }
@@ -30,6 +32,13 @@ export class ProjectItemComponent implements OnInit {
     // 将事件发射出去，让父组件知道。
     this.onEdit.emit();
 }
+
+  // 项目删除按钮点击事件执行方法
+  onDelClick() {
+    // 发射出点击输出属性
+    this.onDel.emit();
+
+  }
 }
 
 

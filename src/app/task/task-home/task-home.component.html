@@ -9,6 +9,8 @@
     <app-task-header
       [header]="list.name"
       (newTask)="launchNewTaskDialog()"
+      (editList)="launchEditListDialog(list)"
+      (delList)="launchConfirmDialog(list)"
       (moveAll)="launchCopyTaskDialog()"
     ></app-task-header>
     <!--循环出任务列表-->
@@ -25,6 +27,6 @@
 <!--新建任务按钮，
 该按钮是独立于任务列表的，单独放置在屏幕右下方
 -->
-<button class="fab-button" md-fab type="button" (click)="openNewProjectDialog()">
+<button class="fab-button" md-fab type="button" (click)="launchNewListDialog()">
   <md-icon>add</md-icon>
 </button>
