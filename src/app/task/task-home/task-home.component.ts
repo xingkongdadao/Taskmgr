@@ -17,7 +17,7 @@ import {slideToRight} from '../../anims/router.anim';
 })
 export class TaskHomeComponent implements OnInit {
 
-  @HostBinding('@routeAnim') state;
+  // @HostBinding('@routeAnim') state;
 
   lists = [
     {

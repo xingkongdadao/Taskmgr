@@ -6,6 +6,7 @@ import {InviteComponent} from '../invite/invite.component';
 import {ConfirmDialogComponent} from '../../shared/confirm-dialog/confirm-dialog.component';
 // 导入路由动画
 import {slideToRight} from '../../anims/router.anim';
+import {listAnimation} from '../../anims/list.anim';
 
 @Component({
   selector: 'app-project-list',
@@ -13,45 +14,53 @@ import {slideToRight} from '../../anims/router.anim';
   styleUrls: ['./project-list.component.scss'],
   animations: [
     slideToRight, // 1  添加动画触发器
+    listAnimation,
   ]
 
 })
 export class ProjectListComponent implements OnInit {
 
-  @HostBinding('@routeAnim') state;
+  // @HostBinding('@routeAnim') state;
 
   projects = [
     {
+      'id': 1,
       'name': '企业协作平台',
       'desc': '这是一个企业内部项目',
       'coverImg': 'assets/img/covers/0.jpg'
     },
     {
+      'id': 2,
       'name': '企业协作平台',
       'desc': '这是一个企业内部项目',
       'coverImg': 'assets/img/covers/0.jpg'
     },
     {
+      'id': 3,
       'name': '企业协作平台',
       'desc': '这是一个企业内部项目',
       'coverImg': 'assets/img/covers/0.jpg'
     },
     {
+      'id': 4,
       'name': '企业协作平台',
       'desc': '这是一个企业内部项目',
       'coverImg': 'assets/img/covers/0.jpg'
     },
     {
+      'id': 5,
       'name': '企业协作平台',
       'desc': '这是一个企业内部项目',
       'coverImg': 'assets/img/covers/0.jpg'
     },
     {
+      'id': 6,
       'name': '企业协作平台',
       'desc': '这是一个企业内部项目',
       'coverImg': 'assets/img/covers/0.jpg'
     },
     {
+      'id': 7,
       'name': '企业协作平台',
       'desc': '这是一个企业内部项目',
       'coverImg': 'assets/img/covers/0.jpg'
@@ -75,7 +84,15 @@ export class ProjectListComponent implements OnInit {
     const dialogRef = this.dialog.open(NewProjectComponent, {data: {title: '新增项目'}});
     // 处理返回的数据,打印到控制台。afterClosed()是Rx的一个可观察对象。然后用订阅方法输出出来。或者是想做的任何操作。
 
-    dialogRef.afterClosed().subscribe(result => console.log(result));
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.projects = [...this.projects,
+        {id: 10, name: '新建一个项目', desc: '第十个项目', coverImg: 'assets/img/covers/2.jpg'},
+        {id: 11, name: '新建第二个项目', desc: '第十十一个项目', coverImg: 'assets/img/covers/3.jpg'},
+      ];
+
+    });
+
   }
 
   // 邀请按钮对应的事件方法
@@ -94,7 +111,10 @@ export class ProjectListComponent implements OnInit {
   // 点击确认输出事件执行方法
   launchConfirmDialog(project) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {data: {title: '删除项目', content: '您确认删除该项目吗？'}});
-    dialogRef.afterClosed().subscribe(result => console.log(result));
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.projects = this.projects.filter(p => p.id !== project.id);
+    });
   }
 }
 
