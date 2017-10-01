@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {OverlayContainer} from '@angular/material';
 
 // 动画
@@ -11,8 +11,8 @@ import {OverlayContainer} from '@angular/material';
 export class AppComponent {
 
   // 为设置弹出组件方便， 全局定义OverlayContainer
-  constructor(private oc: OverlayContainer) {
-
+  constructor(private oc: OverlayContainer, @Inject('BASE_CONFIG') config) {
+    console.log(config);
   }
 
   title = 'app';

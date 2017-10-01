@@ -13,7 +13,7 @@ import {SidebarComponent} from './sidebar/sidebar.component';
 import {HttpModule} from '@angular/http';
 // 3 导入工具类，制作svg使用
 import {loadSvgResources} from '../utils/svg.util';
-
+// 动画需要使用的模块
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule} from '@angular/common';
 
@@ -33,7 +33,11 @@ import {CommonModule} from '@angular/common';
     HeaderComponent,
     FooterComponent,
     SidebarComponent
-  ]
+  ],
+  providers: [
+    // 放在这个池子里面的是单件，所有调用者调用的都是同一个东西。
+    {provide: 'BASE_CONFIG', useValue: 'http://localhost:3000'}
+  ],
 })
 export class CoreModule {
   constructor(
