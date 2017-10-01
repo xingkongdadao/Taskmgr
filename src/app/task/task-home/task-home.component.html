@@ -16,7 +16,6 @@
     <!--任务列表题头-->
     <!--监听task-header组件发出的事件属性，并用launchNewTaskDialog()对事件作出响应-->
     <!--监听task-header组件发出的事件属性，并用launchCopyTaskDialog()对事件作出响应-->
-
     <app-task-header
       [header]="list.name"
       (newTask)="launchNewTaskDialog()"
@@ -24,6 +23,8 @@
       (delList)="launchConfirmDialog(list)"
       (moveAll)="launchCopyTaskDialog()"
     ></app-task-header>
+    <!--快速建立任务-->
+    <app-quick-task (quickTask)="handleQuickTask($event)"></app-quick-task>
     <!--循环出任务列表-->
     <!--监听任务的点击事件(taskClick)，并响应事件launchUpdateTaskDialog()。-->
     <app-task-item

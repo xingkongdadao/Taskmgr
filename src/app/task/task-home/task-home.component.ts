@@ -195,6 +195,10 @@ export class TaskHomeComponent implements OnInit {
         break;
     }
   }
+
+  handleQuickTask(desc: string) {
+    console.log('输出事件传出的数据：' + desc);
+  }
 }
 
 

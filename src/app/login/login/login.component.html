@@ -1,16 +1,19 @@
-<form>
+<form [formGroup]="form" (ngSubmit)="onSubmit(form, $event)">
   <md-card>
     <md-card-header>
       <md-card-title>登录</md-card-title>
     </md-card-header>
     <md-card-content >
       <md-input-container color="accent" class="full-width">
-        <input mdInput type="text" placeholder="您的邮箱">
+        <input mdInput type="text" placeholder="您的邮箱" formControlName="email">
+        <md-error>{{form.controls['email'].errors | json}}</md-error>
       </md-input-container>
       <md-input-container color="accent" class="full-width">
-        <input mdInput type="text" placeholder="您的密码">
+        <input mdInput type="password" placeholder="您的密码" formControlName="password">
+        <md-error>{{form.controls['password'].errors | json}}</md-error>
+
       </md-input-container>
-      <button md-raised-button type="button">登录</button>
+      <button md-raised-button type="submit" >登录</button>
     </md-card-content>
 
     <md-card-actions class="text-right">
