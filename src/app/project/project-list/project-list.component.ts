@@ -20,7 +20,7 @@ import {listAnimation} from '../../anims/list.anim';
 })
 export class ProjectListComponent implements OnInit {
 
-  // @HostBinding('@routeAnim') state;
+  @HostBinding('@routeAnim') state;
 
   projects = [
     {

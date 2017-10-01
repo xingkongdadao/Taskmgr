@@ -7,7 +7,7 @@ import { ProjectItemComponent } from './project-item/project-item.component';
 import { NewProjectComponent } from './new-project/new-project.component';
 import { InviteComponent } from './invite/invite.component';
 import {SharedModule} from '../shared/shared.module';
-import {ConfirmDialogComponent} from "../shared/confirm-dialog/confirm-dialog.component";
+import {ConfirmDialogComponent} from '../shared/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   imports: [

@@ -21,6 +21,7 @@ import {
 
 import {SharedRoutingModule} from './shared-routing.module';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import {DirectiveModule} from '../directive/directive.module';
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MdDatepickerModule,
     MdNativeDateModule,
     MdSelectModule,
+    DirectiveModule,
   ],
   exports: [
     CommonModule,
@@ -61,7 +63,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MdDatepickerModule,
     MdNativeDateModule,
     MdSelectModule,
-
+    DirectiveModule,
   ],
   declarations: [ConfirmDialogComponent]
 })
