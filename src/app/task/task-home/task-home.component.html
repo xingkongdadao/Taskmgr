@@ -11,6 +11,7 @@
     [draggedClass]="'drag-start'"
     [dragData]="list"
     (dropped)="handleMove($event, list)"
+    [ngStyle]="{'order': list.order}"
     *ngFor="let list of lists">
     <!--任务列表题头-->
     <!--监听task-header组件发出的事件属性，并用launchNewTaskDialog()对事件作出响应-->

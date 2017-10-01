@@ -18,6 +18,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule} from '@angular/common';
 
 import 'rxjs/add/operator/take';
+import {ServicesModule} from '../services/services.module';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import 'rxjs/add/operator/take';
     HttpModule,
     SharedModule,
     BrowserAnimationsModule,
+    ServicesModule.forRoot(),
   ],
   declarations: [
     HeaderComponent,
