@@ -17,6 +17,8 @@ import {loadSvgResources} from '../utils/svg.util';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule} from '@angular/common';
 
+import 'rxjs/add/operator/take';
+
 @NgModule({
   imports: [
     CommonModule,

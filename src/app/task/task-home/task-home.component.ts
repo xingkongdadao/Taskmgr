@@ -63,124 +63,7 @@ export class TaskHomeComponent implements OnInit {
           dueDate: new Date(),
           reminder: new Date(),
         },
-        {
-          id: 1,
-          desc: '任务一：去星巴克迈杯咖啡哇哈哈',
-          completed: true,
-          priority: 1,
-          owner: {
-            id: 1,
-            name: '张三',
-            avatar: 'avatars:svg-11'
-          },
-          dueDate: new Date(),
-          reminder: new Date(),
-        },
-        {
-          id: 1,
-          desc: '任务一：去星巴克迈杯咖啡哇哈哈',
-          completed: true,
-          priority: 1,
-          owner: {
-            id: 1,
-            name: '张三',
-            avatar: 'avatars:svg-11'
-          },
-          dueDate: new Date(),
-          reminder: new Date(),
-        },
-        {
-          id: 1,
-          desc: '任务一：去星巴克迈杯咖啡哇哈哈',
-          completed: true,
-          priority: 1,
-          owner: {
-            id: 1,
-            name: '张三',
-            avatar: 'avatars:svg-11'
-          },
-          dueDate: new Date(),
-          reminder: new Date(),
-        },
-        {
-          id: 1,
-          desc: '任务一：去星巴克迈杯咖啡哇哈哈',
-          completed: true,
-          priority: 1,
-          owner: {
-            id: 1,
-            name: '张三',
-            avatar: 'avatars:svg-11'
-          },
-          dueDate: new Date(),
-          reminder: new Date(),
-        },
-        {
-          id: 1,
-          desc: '任务一：去星巴克迈杯咖啡哇哈哈',
-          completed: true,
-          priority: 1,
-          owner: {
-            id: 1,
-            name: '张三',
-            avatar: 'avatars:svg-11'
-          },
-          dueDate: new Date(),
-          reminder: new Date(),
-        },
-        {
-          id: 1,
-          desc: '任务一：去星巴克迈杯咖啡哇哈哈',
-          completed: true,
-          priority: 1,
-          owner: {
-            id: 1,
-            name: '张三',
-            avatar: 'avatars:svg-11'
-          },
-          dueDate: new Date(),
-          reminder: new Date(),
-        },
-        {
-          id: 1,
-          desc: '任务一：去星巴克迈杯咖啡哇哈哈',
-          completed: true,
-          priority: 1,
-          owner: {
-            id: 1,
-            name: '张三',
-            avatar: 'avatars:svg-11'
-          },
-          dueDate: new Date(),
-          reminder: new Date(),
-        },
-        {
-          id: 1,
-          desc: '任务一：去星巴克迈杯咖啡哇哈哈',
-          completed: true,
-          priority: 1,
-          owner: {
-            id: 1,
-            name: '张三',
-            avatar: 'avatars:svg-11'
-          },
-          dueDate: new Date(),
-          reminder: new Date(),
-        },
 
-        {
-          id: 1,
-          desc: '任务二：去星巴克迈杯咖啡',
-          completed: false,
-          priority: 3,
-          owner: {
-            id: 1,
-            name: '张三',
-            avatar: 'avatars:svg-12'
-          },
-          dueDate: new Date(),
-          reminder: new Date(),
-        },
         {
           id: 1,
           desc: '任务三：去星巴克迈杯咖啡',
@@ -293,6 +176,19 @@ export class TaskHomeComponent implements OnInit {
   launchNewListDialog() {
     const dialogRef = this.dialog.open(NewTaskListComponent, {data: {title: '新建任务列表名称'}});
     dialogRef.afterClosed().subscribe(result => console.log(result));
+  }
+
+  handleMove(srcData, list) {
+    switch (srcData.tag) {
+      case 'task-item':
+        console.log('handling item');
+        break;
+      case 'task-list':
+        console.log('handling list');
+        break;
+      default:
+        break;
+    }
   }
 }
 

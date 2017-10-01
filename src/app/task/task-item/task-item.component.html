@@ -10,7 +10,9 @@
               'priority-emergency': item.priority === 1
               }"
               [appDrag]="true"
+              [dragTag]="'task-item'"
               [draggedClass]="'drag-start'"
+              [dragData]="item"
               (click)="onItemClick()"
 >
   <!--任务选中状态-->
