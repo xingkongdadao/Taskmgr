@@ -25,7 +25,8 @@ export class RegisterComponent implements OnInit {
       name: [],
       password: [],
       repeat: [],
-      avatar: [img]
+      avatar: [img],
+      dateOfBirth: ['1990-01-01'],
     });
 
 
@@ -52,7 +53,11 @@ export class RegisterComponent implements OnInit {
 
 
   onSubmit({value, valid}, ev: Event) {
-
+    ev.preventDefault();
+    if (!valid) {
+      return;
+    }
+    console.log(value);
   }
 
 }

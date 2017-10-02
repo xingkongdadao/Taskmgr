@@ -17,7 +17,6 @@ import {ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR} fro
       multi: true,
     }
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImageListSelectComponent implements OnInit, ControlValueAccessor {
 
