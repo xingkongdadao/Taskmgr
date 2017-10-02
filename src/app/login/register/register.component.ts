@@ -27,6 +27,8 @@ export class RegisterComponent implements OnInit {
       repeat: [],
       avatar: [img]
     });
+
+
     // this.items = [
     //   'avatars:svg-1',
     //   'avatars:svg-2',
@@ -45,6 +47,11 @@ export class RegisterComponent implements OnInit {
     //   'avatars:svg-15',
     //   'avatars:svg-16',
     // ];
+
+  }
+
+
+  onSubmit({value, valid}, ev: Event) {
 
   }
 
