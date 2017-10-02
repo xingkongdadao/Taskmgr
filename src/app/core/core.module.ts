@@ -40,7 +40,9 @@ import {ServicesModule} from '../services/services.module';
   ],
   providers: [
     // 放在这个池子里面的是单件，所有调用者调用的都是同一个东西。
-    {provide: 'BASE_CONFIG', useValue: 'http://localhost:3000'}
+    {provide: 'BASE_CONFIG', useValue: {
+      uri: 'http://localhost:3000',
+    }}
   ],
 })
 export class CoreModule {
