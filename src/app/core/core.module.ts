@@ -20,6 +20,8 @@ import {CommonModule} from '@angular/common';
 import 'rxjs/add/operator/take';
 import {ServicesModule} from '../services/services.module';
 
+import '../utils/debug.util';
+
 @NgModule({
   imports: [
     CommonModule,
