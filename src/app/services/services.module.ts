@@ -1,6 +1,7 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {QuoteService} from './quote.service';
 import {ProjectService} from './project.service';
+import {TaskListService} from './task-list.service';
 
 // 4-4节有改造
 @NgModule()
@@ -11,6 +12,7 @@ export class ServicesModule {
       providers: [
         QuoteService,
         ProjectService,
+        TaskListService,
       ]
     };
   }

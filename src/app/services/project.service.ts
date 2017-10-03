@@ -50,7 +50,8 @@ export class ProjectService {
 
   // GET /projects
   get(userId: string): Observable<Project[]> {
-    const uri = this.config.uri + `/` + this.domain;
+    const uri = `${this.config.uri}/${this.domain}`;   // 使用键盘左上角的符号，而不是单引号。
+    // const uri = this.config.uri + `/` + this.domain;
     return this.http
       .get(uri, {params: {'members_like': userId}, headers: this.headers})
       .map(res => res.json() as Project[]);
