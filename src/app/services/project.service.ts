@@ -17,7 +17,8 @@ export class ProjectService {
   // post
   add(project: Project): Observable<Project> {
     project.id = null;
-    const uri = this.config.uri + this.domain;
+    const uri = `${this.config.uri}/${this.domain}`;
+    console.log('添加项目地址是：' + uri);
     return this.http
       .post(uri, JSON.stringify(project), {headers: this.headers})
       .map(res => res.json());
@@ -25,7 +26,7 @@ export class ProjectService {
 
   // patch
   update(project: Project): Observable<Project> {
-    const uri = this.config.uri + this.domain + project.id;
+    const uri = this.config.uri + '/' + this.domain + '/'  + project.id;
     const toUpdate = {
       name: project.name,
       desc: project.desc,

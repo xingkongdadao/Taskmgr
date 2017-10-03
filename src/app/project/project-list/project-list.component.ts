@@ -8,6 +8,9 @@ import {ConfirmDialogComponent} from '../../shared/confirm-dialog/confirm-dialog
 import {slideToRight} from '../../anims/router.anim';
 import {listAnimation} from '../../anims/list.anim';
 import {ProjectService} from '../../services/project.service';
+import * as _ from 'lodash';
+import {Observable} from 'rxjs/Observable';
+import {Project} from '../../domain/project.model';
 
 @Component({
   selector: 'app-project-list',
@@ -55,25 +58,34 @@ export class ProjectListComponent implements OnInit {
 
   ngOnInit() {
     this.service$.get('37489e0c-df34-c261-71c4-ce75357e3035')
-      .subscribe(projects => this.projects = projects);
+      .subscribe(projects => {
+        this.projects = projects;
+        // this.cd.markForCheck();
+      });
   }
 
   // 新建项目按钮对应的事件方法
   openNewProjectDialog() {
+    const img = `/assets/img/covers/${Math.floor(Math.random() * 40)}_tn.jpg`;
+    const thumbnails$ = this.getThumbnailsObs();
+
     // 对话框默认情况是不支持主题改变的。
     // 打开对话框组件NewProjectComponent,第一个为组件名称，后面为要传入组件的数据,数据可以为任意类型的。
     // 之后配置要打开的组件对话框。
     // 在dialog.open的时候，其实是有返回数据的。
-    const dialogRef = this.dialog.open(NewProjectComponent, {data: {title: '新增项目'}});
+    const dialogRef = this.dialog.open(
+      NewProjectComponent,
+      {data: {thumbnails: this.getThumbnails(), img: img}});
     // 处理返回的数据,打印到控制台。afterClosed()是Rx的一个可观察对象。然后用订阅方法输出出来。或者是想做的任何操作。
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      this.projects = [...this.projects,
-        {id: 10, name: '新建一个项目', desc: '第十个项目', coverImg: 'assets/img/covers/2.jpg'},
-        {id: 11, name: '新建第二个项目', desc: '第十十一个项目', coverImg: 'assets/img/covers/3.jpg'},
-      ];
-
+    dialogRef.afterClosed().take(1)
+      .filter(n => n)
+      .map(project => ({...project, coverImg: this.buildImgSrc(project.coverImg)}))
+      .switchMap(v => this.service$.add(v))
+      .subscribe(project => {
+      if (project) {
+        this.projects = [...this.projects, project];
+      }
     });
 
   }
@@ -87,8 +99,19 @@ export class ProjectListComponent implements OnInit {
   }
 
   // 弹出项目编辑窗口
-  launchUpdateDialog(project) {
-    const dialogRef = this.dialog.open(NewProjectComponent, {data: {title: '编辑项目', project: project}});
+  launchUpdateDialog(project: Project) {
+    const dialogRef = this.dialog.open(
+      NewProjectComponent,
+      {data: {thumbnails: this.getThumbnails(), project: project}});
+
+    dialogRef.afterClosed().take(1)
+      .filter(n => n)
+      .map(val => ({...val, id: project.id, coverImg: this.buildImgSrc(val.coverImg)}))
+      .switchMap(v => this.service$.update(v))
+      .subscribe(project => {
+        const index = this.projects.map(p => p.id).indexOf(project.id);
+        this.projects = [...this.projects.slice(0, index), project, ...this.projects.slice(index + 1)];
+      });
   }
 
   // 点击确认输出事件执行方法
@@ -99,6 +122,25 @@ export class ProjectListComponent implements OnInit {
       this.projects = this.projects.filter(p => p.id !== project.id);
     });
   }
+
+  private getThumbnails() {
+    return _.range(0, 40)
+      .map(i => `/assets/img/covers/${i}_tn.jpg`);
+  }
+
+  private getThumbnailsObs(): Observable<string[]> {
+    return Observable
+      .range(0, 40)
+      .map(i => `/assets/img/covers/${i}_tn.jpg`)
+      .reduce((r, x) => {
+        return [...r, x];
+      }, []);
+  }
+
+  private buildImgSrc(img: string): string {
+    return img.indexOf('_') > -1 ? img.split('_', 1)[0] + '.jpg' : img;
+  }
+
 }
 
 
