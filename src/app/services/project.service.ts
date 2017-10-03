@@ -53,7 +53,7 @@ export class ProjectService {
     const uri = this.config.uri + `/` + this.domain;
     return this.http
       .get(uri, {params: {'members_like': userId}, headers: this.headers})
-      .map(res => res.json());
+      .map(res => res.json() as Project[]);
   }
 
 

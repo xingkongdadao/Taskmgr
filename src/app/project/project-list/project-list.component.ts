@@ -7,6 +7,7 @@ import {ConfirmDialogComponent} from '../../shared/confirm-dialog/confirm-dialog
 // 导入路由动画
 import {slideToRight} from '../../anims/router.anim';
 import {listAnimation} from '../../anims/list.anim';
+import {ProjectService} from '../../services/project.service';
 
 @Component({
   selector: 'app-project-list',
@@ -20,59 +21,41 @@ import {listAnimation} from '../../anims/list.anim';
 })
 export class ProjectListComponent implements OnInit {
 
-  @HostBinding('@routeAnim') state;
+  // @HostBinding('@routeAnim') state;
 
-  projects = [
-    {
-      'id': 1,
-      'name': '企业协作平台',
-      'desc': '这是一个企业内部项目',
-      'coverImg': 'assets/img/covers/0.jpg'
-    },
-    {
-      'id': 2,
-      'name': '企业协作平台',
-      'desc': '这是一个企业内部项目',
-      'coverImg': 'assets/img/covers/0.jpg'
-    },
-    {
-      'id': 3,
-      'name': '企业协作平台',
-      'desc': '这是一个企业内部项目',
-      'coverImg': 'assets/img/covers/0.jpg'
-    },
-    {
-      'id': 4,
-      'name': '企业协作平台',
-      'desc': '这是一个企业内部项目',
-      'coverImg': 'assets/img/covers/0.jpg'
-    },
-    {
-      'id': 5,
-      'name': '企业协作平台',
-      'desc': '这是一个企业内部项目',
-      'coverImg': 'assets/img/covers/0.jpg'
-    },
-    {
-      'id': 6,
-      'name': '企业协作平台',
-      'desc': '这是一个企业内部项目',
-      'coverImg': 'assets/img/covers/0.jpg'
-    },
-    {
-      'id': 7,
-      'name': '企业协作平台',
-      'desc': '这是一个企业内部项目',
-      'coverImg': 'assets/img/covers/0.jpg'
-    },
+  // projects1 = [
+  //   {
+  //     'id': 1,
+  //     'name': '企业协作平台',
+  //     'desc': '这是一个企业内部项目',
+  //     'coverImg': 'assets/img/covers/0.jpg'
+  //   },
+  //   {
+  //     'id': 2,
+  //     'name': '企业协作平台',
+  //     'desc': '这是一个企业内部项目',
+  //     'coverImg': 'assets/img/covers/0.jpg'
+  //   },
+  //   {
+  //     'id': 3,
+  //     'name': '企业协作平台',
+  //     'desc': '这是一个企业内部项目',
+  //     'coverImg': 'assets/img/covers/0.jpg'
+  //   },
+  //
+  //
+  // ];
 
-  ];
+
+  projects = [];
 
   // 将MdDialog进行注册，实例化
-  constructor(public dialog: MdDialog) {
+  constructor(public dialog: MdDialog, private service$: ProjectService) {
   }
 
   ngOnInit() {
+    this.service$.get('37489e0c-df34-c261-71c4-ce75357e3035')
+      .subscribe(projects => this.projects = projects);
   }
 
   // 新建项目按钮对应的事件方法
