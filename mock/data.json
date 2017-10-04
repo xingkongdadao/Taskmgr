@@ -42,6 +42,19 @@
       "roleIds": [
         1
       ]
+    },
+    {
+      "password": "Ls123456",
+      "name": "李将",
+      "avatar": "avatars:svg-2",
+      "email": "lisi@163.com",
+      "id": "BkkDvwee-wert",
+      "projectIds": [
+        "Sk2HaTagb"
+      ],
+      "roleIds": [
+        1
+      ]
     }
   ],
   "projects": [
@@ -70,9 +83,9 @@
       ]
     },
     {
-      "name": "中国",
+      "name": "中国系统",
       "desc": "中国",
-      "coverImg": "/assets/img/covers/10.jpg",
+      "coverImg": "/assets/img/covers/5.jpg",
       "members": [
         "37489e0c-df34-c261-71c4-ce75357e3035"
       ],

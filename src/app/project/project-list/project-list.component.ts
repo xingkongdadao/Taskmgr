@@ -91,9 +91,9 @@ export class ProjectListComponent implements OnInit {
   }
 
   // 邀请按钮对应的事件方法
-  launchInviteDialog() {
+  launchInviteDialog(project) {
     // 打开对话框组件InviteComponent,不需要传入数据。
-    const dialogRef = this.dialog.open(InviteComponent);
+    const dialogRef = this.dialog.open(InviteComponent, {data: {members: [], project: project}});
     // dialogRef.afterClosed().subscribe(result => console.log(result));
 
   }
