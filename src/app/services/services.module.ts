@@ -4,6 +4,7 @@ import {ProjectService} from './project.service';
 import {TaskListService} from './task-list.service';
 import {TaskService} from './task.service';
 import {UserService} from "./user.service";
+import {AuthService} from "./auth.service";
 
 // 4-4节有改造
 @NgModule()
@@ -17,6 +18,7 @@ export class ServicesModule {
         TaskListService,
         TaskService,
         UserService,
+        AuthService,
       ]
     };
   }
