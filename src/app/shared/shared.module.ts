@@ -17,6 +17,7 @@ import {
   MdDatepickerModule,
   MdNativeDateModule,
   MdSelectModule,
+  MdChipsModule,
 } from '@angular/material';
 
 import {SharedRoutingModule} from './shared-routing.module';
@@ -50,6 +51,7 @@ import { ChipsListComponent } from './chips-list/chips-list.component';
     DirectiveModule,
     FormsModule,
     ReactiveFormsModule,
+    MdChipsModule,
   ],
   exports: [
     CommonModule,
@@ -74,6 +76,9 @@ import { ChipsListComponent } from './chips-list/chips-list.component';
     ReactiveFormsModule,
     ImageListSelectComponent,
     AgeInputComponent,
+    ChipsListComponent,
+    MdChipsModule,
+
   ],
   declarations: [
     ConfirmDialogComponent,
