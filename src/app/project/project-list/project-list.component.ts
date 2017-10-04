@@ -108,18 +108,20 @@ export class ProjectListComponent implements OnInit {
       .filter(n => n)
       .map(val => ({...val, id: project.id, coverImg: this.buildImgSrc(val.coverImg)}))
       .switchMap(v => this.service$.update(v))
-      .subscribe(project => {
-        const index = this.projects.map(p => p.id).indexOf(project.id);
-        this.projects = [...this.projects.slice(0, index), project, ...this.projects.slice(index + 1)];
+      .subscribe(val => {
+        const index = this.projects.map(p => p.id).indexOf(val.id);
+        this.projects = [...this.projects.slice(0, index), val, ...this.projects.slice(index + 1)];
       });
   }
 
   // 点击确认输出事件执行方法
   launchConfirmDialog(project) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {data: {title: '删除项目', content: '您确认删除该项目吗？'}});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      this.projects = this.projects.filter(p => p.id !== project.id);
+    dialogRef.afterClosed()
+      .take(1)
+      .switchMap(_ => this.service$.delete(project))
+      .subscribe(result => {
+      this.projects = this.projects.filter(p => p.id !== result.id);
     });
   }
 
