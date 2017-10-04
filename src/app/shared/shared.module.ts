@@ -25,6 +25,7 @@ import {DirectiveModule} from '../directive/directive.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ImageListSelectComponent} from './image-list-select/image-list-select.component';
 import {AgeInputComponent} from './age-input/age-input.component';
+import { ChipsListComponent } from './chips-list/chips-list.component';
 
 @NgModule({
   imports: [
@@ -78,6 +79,7 @@ import {AgeInputComponent} from './age-input/age-input.component';
     ConfirmDialogComponent,
     ImageListSelectComponent,
     AgeInputComponent,
+    ChipsListComponent,
   ]
 })
 export class SharedModule {
