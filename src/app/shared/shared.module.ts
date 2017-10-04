@@ -18,6 +18,12 @@ import {
   MdNativeDateModule,
   MdSelectModule,
   MdChipsModule,
+  MdTabsModule,
+  MdButtonToggleModule,
+  MdProgressBarModule,
+  MdSlideToggleModule,
+  MdSidenavModule,
+  MdSelectionModule,
 } from '@angular/material';
 
 import {SharedRoutingModule} from './shared-routing.module';
@@ -32,6 +38,11 @@ import { IdentityInputComponent } from './identity-input/identity-input.componen
 
 @NgModule({
   imports: [
+    MdProgressBarModule,
+    MdSidenavModule,
+    MdSlideToggleModule,
+    MdSelectionModule,
+    // DirectivesModule,
     CommonModule,
     SharedRoutingModule,
     MdToolbarModule,
@@ -50,12 +61,19 @@ import { IdentityInputComponent } from './identity-input/identity-input.componen
     MdDatepickerModule,
     MdNativeDateModule,
     MdSelectModule,
+    MdButtonToggleModule,
     DirectiveModule,
     FormsModule,
     ReactiveFormsModule,
     MdChipsModule,
+    MdTabsModule,
   ],
   exports: [
+    MdProgressBarModule,
+    MdSelectionModule,
+    MdSidenavModule,
+    MdSlideToggleModule,
+    // DirectivesModule,
     CommonModule,
     MdToolbarModule,
     MdIconModule,
@@ -73,6 +91,7 @@ import { IdentityInputComponent } from './identity-input/identity-input.componen
     MdDatepickerModule,
     MdNativeDateModule,
     MdSelectModule,
+    MdButtonToggleModule,
     DirectiveModule,
     FormsModule,
     ReactiveFormsModule,
@@ -82,6 +101,8 @@ import { IdentityInputComponent } from './identity-input/identity-input.componen
     MdChipsModule,
     AreaListComponent,
     IdentityInputComponent,
+    MdTabsModule,
+
   ],
   declarations: [
     ConfirmDialogComponent,

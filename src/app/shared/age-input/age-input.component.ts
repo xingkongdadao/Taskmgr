@@ -54,7 +54,8 @@ export interface Age {
 })
 
 // 自定义表单空间
-export class AgeInputComponent implements OnInit, ControlValueAccessor, OnDestroy {
+export class AgeInputComponent implements ControlValueAccessor, OnInit, OnDestroy {
+
   selectedUnit = AgeUnit.Year;
   form: FormGroup;
   ageUnits = [
@@ -71,18 +72,16 @@ export class AgeInputComponent implements OnInit, ControlValueAccessor, OnDestro
   @Input() yearsTop = 150;
   @Input() debounceTime = 300;
   private subBirth: Subscription;
-  private propagateChange = (_: any) => {
-  }
+  private propagateChange = (_: any) => {};
 
-  constructor(private fb: FormBuilder) {
-  }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     const initDate = this.dateOfBirth ? this.dateOfBirth : toDate(subYears(Date.now(), 30));
     const initAge = this.toAge(initDate);
     this.form = this.fb.group({
       birthday: [initDate, this.validateDate],
-      age: this.fb.group({
+      age:  this.fb.group({
         ageNum: [initAge.age],
         ageUnit: [initAge.unit]
       }, {validator: this.validateAge('ageNum', 'ageUnit')})
@@ -158,7 +157,7 @@ export class AgeInputComponent implements OnInit, ControlValueAccessor, OnDestro
   }
 
   // 验证表单，验证结果正确返回 null 否则返回一个验证结果对象
-  validate(c: FormControl): { [key: string]: any } {
+  validate(c: FormControl): {[key: string]: any} {
     const val = c.value;
     if (!val) {
       return null;
@@ -171,7 +170,7 @@ export class AgeInputComponent implements OnInit, ControlValueAccessor, OnDestro
     };
   }
 
-  validateDate(c: FormControl): { [key: string]: any } {
+  validateDate(c: FormControl): {[key: string]: any} {
     const val = c.value;
     return isValidDate(val) ? null : {
       birthdayInvalid: true
@@ -179,7 +178,7 @@ export class AgeInputComponent implements OnInit, ControlValueAccessor, OnDestro
   }
 
   validateAge(ageNumKey: string, ageUnitKey: string) {
-    return (group: FormGroup): { [key: string]: any } => {
+    return (group: FormGroup): {[key: string]: any} => {
       const ageNum = group.controls[ageNumKey];
       const ageUnit = group.controls[ageUnitKey];
       let result = false;
