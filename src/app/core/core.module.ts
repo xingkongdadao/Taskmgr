@@ -20,6 +20,9 @@ import {CommonModule} from '@angular/common';
 import 'rxjs/add/operator/take';
 import {ServicesModule} from '../services/services.module';
 
+// 导入storeModule
+import {AppStoreModule} from '../reducers';
+
 import '../utils/debug.util';
 // import 'hammerjs';
 import '../utils/debug.util';
@@ -57,6 +60,7 @@ import 'rxjs/add/operator/do';
     SharedModule,
     BrowserAnimationsModule,
     ServicesModule.forRoot(),
+    AppStoreModule,  // 导入AppStoreModule
   ],
   declarations: [
     HeaderComponent,
