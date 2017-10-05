@@ -4,7 +4,9 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "server": "json-server --watch ./mock/data.json --port 3000",
+    "start": "ng serve --port=4200 --open",
+    "runtwo": "concurrently \"npm run start\" \"npm run server" ,
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
