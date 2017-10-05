@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
-import {QuoteService} from '../../services/quote.service';
 import {Quote} from '../../domain/quote.model';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
@@ -26,15 +25,17 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private store$: Store<fromRoot.State>,
-              private quoteService$: QuoteService, ) {
+              // private quoteService$: QuoteService,     // 用effects 替代不需使用
+              ) {
     // 先得到state
     this.quote$ = this.store$.select(fromRoot.getQuote);
-    // 传递消息
-    this.quoteService$
-      .getQuote()
-      .subscribe(q => {
-        this.store$.dispatch(new actions.QuoteSuccessAction(q));
-      });
+    // 传递消息，  不需要了，在quote.effects 中已经取得数据了。
+    // this.quoteService$
+    //   .getQuote()
+    //   .subscribe(q => {
+    //     this.store$.dispatch(new actions.QuoteSuccessAction(q));
+    //   });
+    this.store$.dispatch(new actions.QuoteAction(null));
   }
 
   ngOnInit() {
