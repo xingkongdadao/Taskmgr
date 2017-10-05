@@ -22,6 +22,7 @@ import { compose } from '@ngrx/core/compose';
 
 import {environment} from '../../environments/environment';
 import {storeFreeze} from 'ngrx-store-freeze';
+import {createSelector} from 'reselect';
 
 
 // 应用层面的全局的state，应该包含下面所有的state。
@@ -51,6 +52,15 @@ export function reducer(state = initialState, action: any ): State {
   // return environment.production ? productionReducers(state, action) : developmentReducers(state, action);
   return developmentReducers(state, action);
 }
+
+
+export const getQuoteState = (state: State) => state.quote;
+
+
+
+// 除了最后一个，其它的都是输入型参数。当成最后一个函数的参数，
+export const getQuote = createSelector(getQuoteState, fromQuote.getQuote);
+
 
 
 

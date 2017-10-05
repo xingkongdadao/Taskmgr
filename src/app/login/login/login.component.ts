@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
               private store$: Store<fromRoot.State>,
               private quoteService$: QuoteService, ) {
     // 先得到state
-    this.quote$ = this.store$.select(state => state.quote.quote);
+    this.quote$ = this.store$.select(fromRoot.getQuote);
     // 传递消息
     this.quoteService$
       .getQuote()
