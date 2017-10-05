@@ -49,6 +49,7 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/count';
 import 'rxjs/add/operator/do';
+import {AppEffectsModule} from '../effects/effects.module';
 
 
 
@@ -61,6 +62,7 @@ import 'rxjs/add/operator/do';
     BrowserAnimationsModule,
     ServicesModule.forRoot(),
     AppStoreModule,  // 导入AppStoreModule
+    AppEffectsModule,
   ],
   declarations: [
     HeaderComponent,
