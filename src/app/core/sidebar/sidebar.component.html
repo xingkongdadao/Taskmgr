@@ -12,7 +12,6 @@
     <span md-line>月视图</span>
     <span md-line md-subheader>查看你的月日历</span>
   </md-list-item>
-
   <md-list-item>
     <md-icon md-list-icon svgIcon="week"></md-icon>
     <span md-line>周视图</span>
@@ -23,6 +22,18 @@
     <span md-line>日视图</span>
     <span md-line md-subheader>查看你的当日日历</span>
   </md-list-item>
+
+  <md-list-item [routerLink]="['/login/login']" (click)="onNavClick()">
+    <md-icon md-list-icon svgIcon="month"></md-icon>
+    <span md-line>登录界面</span>
+    <span md-line md-subheader>查看你的月日历</span>
+  </md-list-item>
+  <md-list-item [routerLink]="['/login/register']" (click)="onNavClick()">
+    <md-icon md-list-icon svgIcon="month"></md-icon>
+    <span md-line>注册页面</span>
+    <span md-line md-subheader>查看你的月日历</span>
+  </md-list-item>
+
 
 
 </md-nav-list>
