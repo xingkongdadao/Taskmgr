@@ -2,6 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import {QuoteService} from '../../services/quote.service';
 import {Quote} from '../../domain/quote.model';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../reducers';
+import * as actions from '../../actions/quote.action';
 
 
 @Component({
@@ -12,16 +16,25 @@ import {Quote} from '../../domain/quote.model';
 export class LoginComponent implements OnInit {
 
   form: FormGroup;
-  quote: Quote = {
-    cn: '网络不通',
-    en: 'can not get message',
-    pic: 'assets/img/quote_fallback.jpg',
-  };
+  // quote: Quote = {
+  //   cn: '网络不通',
+  //   en: 'can not get message',
+  //   pic: 'assets/img/quote_fallback.jpg',
+  // };
+
+  quote$: Observable<Quote>;
 
   constructor(private fb: FormBuilder,
+              private store$: Store<fromRoot.State>,
               private quoteService$: QuoteService, ) {
-    this.quoteService$.getQuote()
-      .subscribe(q => this.quote = q);
+    // 先得到state
+    this.quote$ = this.store$.select(state => state.quote.quote);
+    // 传递消息
+    this.quoteService$
+      .getQuote()
+      .subscribe(q => {
+        this.store$.dispatch({type: actions.QUOTE_SUCCESS, payload: q});
+      });
   }
 
   ngOnInit() {
