@@ -59,7 +59,7 @@ export class RegisterFailAction implements Action {
 export class LogoutAction implements Action {
   type = ActionTypes.LOGOUT;
 
-  constructor(public payload: Auth) {
+  constructor(public payload: null) {
   }
 }
 
