@@ -1,7 +1,7 @@
-<div class="container" [@listAnim]="projects.length">
+<div class="container" [@listAnim]="listAnim$ | async">
   <!--循环项目到list中-->
   <!--写一个launchInviteDialog()方法，来监听输出的事件。一旦事件发生，则执行launchInviteDialog()方法-->
-  <app-project-item *ngFor="let project of projects"
+  <app-project-item *ngFor="let project of (projects$ | async)"
                     [item] = "project"
                     class="card"
                     (onInvite)="launchInviteDialog(project)"

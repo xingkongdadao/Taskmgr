@@ -11,6 +11,9 @@ import {ProjectService} from '../../services/project.service';
 import * as _ from 'lodash';
 import {Observable} from 'rxjs/Observable';
 import {Project} from '../../domain/project.model';
+import {Store} from '@ngrx/store';
+import * as fromRoot from '../../reducers/index';
+import * as actions from '../../actions/project.action';
 
 @Component({
   selector: 'app-project-list',
@@ -50,18 +53,26 @@ export class ProjectListComponent implements OnInit {
   // ];
 
 
-  projects = [];
+  projects$: Observable<Project[]>;
+  listAnim$: Observable<number>;
 
   // 将MdDialog进行注册，实例化
-  constructor(public dialog: MdDialog, private service$: ProjectService) {
+  constructor(
+    public dialog: MdDialog,
+    private store$: Store<fromRoot.State>
+    // private service$: ProjectService
+  ) {
+    this.store$.dispatch(new actions.LoadProjectsAction(null));
+    this.projects$ = this.store$.select(fromRoot.getProjects);
+    this.listAnim$ = this.projects$.map(p => p.length);
   }
 
   ngOnInit() {
-    this.service$.get('37489e0c-df34-c261-71c4-ce75357e3035')
-      .subscribe(projects => {
-        this.projects = projects;
-        // this.cd.markForCheck();
-      });
+    // this.service$.get('37489e0c-df34-c261-71c4-ce75357e3035')
+    //   .subscribe(projects => {
+    //     this.projects = projects;
+    //     // this.cd.markForCheck();
+    //   });
   }
 
   // 新建项目按钮对应的事件方法
@@ -81,10 +92,11 @@ export class ProjectListComponent implements OnInit {
     dialogRef.afterClosed().take(1)
       .filter(n => n)
       .map(project => ({...project, coverImg: this.buildImgSrc(project.coverImg)}))
-      .switchMap(v => this.service$.add(v))
+      // .switchMap(v => this.service$.add(v))
       .subscribe(project => {
       if (project) {
-        this.projects = [...this.projects, project];
+        this.store$.dispatch(new actions.AddProjectAction(project));
+        // this.projects = [...this.projects, project];
       }
     });
 
@@ -107,10 +119,12 @@ export class ProjectListComponent implements OnInit {
     dialogRef.afterClosed().take(1)
       .filter(n => n)
       .map(val => ({...val, id: project.id, coverImg: this.buildImgSrc(val.coverImg)}))
-      .switchMap(v => this.service$.update(v))
+      // .switchMap(v => this.service$.update(v))
       .subscribe(val => {
-        const index = this.projects.map(p => p.id).indexOf(val.id);
-        this.projects = [...this.projects.slice(0, index), val, ...this.projects.slice(index + 1)];
+        this.store$.dispatch(new actions.UpdateProjectAction(project));
+
+        // const index = this.projects.map(p => p.id).indexOf(val.id);
+        // this.projects = [...this.projects.slice(0, index), val, ...this.projects.slice(index + 1)];
       });
   }
 
@@ -119,9 +133,11 @@ export class ProjectListComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {data: {title: '删除项目', content: '您确认删除该项目吗？'}});
     dialogRef.afterClosed()
       .take(1)
-      .switchMap(_ => this.service$.delete(project))
+      // .switchMap(_ => this.service$.delete(project))
       .subscribe(result => {
-      this.projects = this.projects.filter(p => p.id !== result.id);
+        this.store$.dispatch(new actions.DeleteProjectAction(project));
+
+        // this.projects = this.projects.filter(p => p.id !== result.id);
     });
   }
 
