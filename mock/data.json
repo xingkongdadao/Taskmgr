@@ -55,6 +55,22 @@
       "roleIds": [
         1
       ]
+    },
+    {
+      "email": "lijiang@gogotrans.com",
+      "password": "1234",
+      "id": "ryECI1E2Z"
+    },
+    {
+      "name": "李将",
+      "email": "xingkongdadao@163.com",
+      "password": "123456",
+      "repeat": "123456",
+      "avatar": "avatars:svg-2",
+      "dateOfBirth": "",
+      "address": "",
+      "identity": null,
+      "id": "Bkqb9ONn-"
     }
   ],
   "projects": [
@@ -81,15 +97,6 @@
         "BkWpk7jGZb",
         "H1fTyXjMWW"
       ]
-    },
-    {
-      "name": "中国系统",
-      "desc": "中国",
-      "coverImg": "/assets/img/covers/5.jpg",
-      "members": [
-        "37489e0c-df34-c261-71c4-ce75357e3035"
-      ],
-      "id": "SyGaGXWh-"
     },
     {
       "name": "美国",

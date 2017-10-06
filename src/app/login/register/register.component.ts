@@ -7,6 +7,11 @@ import {Subscription} from 'rxjs/Subscription';
 // import * as actions from '../../actions/auth.action';
 import {extractInfo, getAddrByCode, isValidAddr} from '../../utils/identity.util';
 import {isValidDate, toDate} from '../../utils/date.util';
+import {Store} from '@ngrx/store';
+import * as fromRoot from '../../reducers';
+
+import * as authActions from '../../actions/auth.action';
+
 
 
 @Component({
@@ -24,7 +29,7 @@ export class RegisterComponent implements OnInit {
   private readonly avatarName = 'avatars';
 
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private store$: Store<fromRoot.State>) {
     this.avatars$ = Observable
       .range(1, 16)
       .map(i => `${this.avatarName}:svg-${i}`)
@@ -34,7 +39,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
 
-    const img = '${this.avatarName}:svg-${Math.floor(Math.random() * 16).toFixed(0)}';
+    const img = `${this.avatarName}:svg-${Math.floor(Math.random() * 16).toFixed(0)}`;
 
     const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
     this.items = nums.map(d => 'avatars:svg-' + d);
@@ -107,7 +112,8 @@ export class RegisterComponent implements OnInit {
     if (!valid) {
       return;
     }
-    console.log(value);
+    this.store$.dispatch(new authActions.RegisterAction(value));
+    // console.log(value);
   }
 
 }
