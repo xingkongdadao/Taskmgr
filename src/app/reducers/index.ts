@@ -13,6 +13,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 // import { routes } from './routes';
 import * as fromQuote from './quote.reducer';
 import * as fromAuth from './auth.reducer';
+import * as fromProject from './project.reducer';
+
 import { compose } from '@ngrx/core/compose';
 /**
  * storeFreeze 用于防止 state 被修改，在 Redux 中我们必须确保 state 是不可更改的，这个函数
@@ -30,18 +32,22 @@ import {Auth} from '../domain/auth.model';
 export interface State {
   quote: fromQuote.State;
   auth: Auth;
+  project: fromProject.State;
 }
 
 // 全局的初始值， 所有state的初始值
 const initialState: State = {
   quote: fromQuote.initialState,
   auth: fromAuth.initialState,
+  project: fromProject.initialState,
+
 };
 
 // 建立reducer字典，包含所有分支的。
 const reducers = {
   quote: fromQuote.reducer,
   auth: fromAuth.reducer,
+  project: fromProject.reducer,
 };
 
 /**
@@ -59,11 +65,11 @@ export function reducer(state = initialState, action: any ): State {
 
 export const getAuthState = (state: State) => state.auth;
 export const getQuoteState = (state: State) => state.quote;
-
+export const getProjectState = (state: State) => state.project;
 
 // 除了最后一个，其它的都是输入型参数。当成最后一个函数的参数，
 export const getQuote = createSelector(getQuoteState, fromQuote.getQuote);
-
+export const getProjects = createSelector(getProjectState, fromProject.getAll);
 
 
 @NgModule({

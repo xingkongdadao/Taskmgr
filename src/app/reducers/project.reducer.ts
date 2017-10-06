@@ -17,9 +17,11 @@ export const initialState: State = {
 
 const addProject = (state, action) => {
   const project = action.payload;
+  // 判断是否已经存在，若存在则返回存在的
   if (state.entities[project.id]) {
     return state;
   }
+  // 若是不存在，则添加新状态
   const ids = [...state.ids, project.id];
   const entities = {...state.entities, [project.id]: project};
   return {...state, ids: ids, entities: entities};
