@@ -6,7 +6,7 @@ import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 // import {ProjectService} from '../services';
 import * as actions from '../actions/project.action';
-// import * as tasklistActions from '../actions/task-list.action';
+import * as tasklistActions from '../actions/task-list.action';
 // import * as userActions from '../actions/user.action';
 import * as fromRoot from '../reducers/index';
 import {Project} from '../domain';
@@ -68,7 +68,13 @@ export class ProjectEffects {
   selectProject$: Observable<Action> = this.actions$
     .ofType(actions.ActionTypes.SELECT)
     .map(toPayload)
-    .map(project => go([`/tasklists/${project.id}`]));
+    .map(project => go([`/task/taskList/${project.id}`]));
+
+  @Effect()
+  loadTaskLists$: Observable<Action> = this.actions$
+    .ofType(actions.ActionTypes.SELECT)
+    .map(toPayload)
+    .map(project => new tasklistActions.LoadTaskListsAction(project.id));
 
 
 

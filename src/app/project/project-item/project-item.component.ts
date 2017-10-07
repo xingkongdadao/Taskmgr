@@ -4,7 +4,6 @@ import {Component, Input, OnInit, Output, EventEmitter, HostBinding, HostListene
 import {cardAnim} from '../../anims/card.anim';
 
 
-
 @Component({
   selector: 'app-project-item',
   templateUrl: './project-item.component.html',
@@ -22,6 +21,8 @@ export class ProjectItemComponent implements OnInit {
   @Output() onEdit = new EventEmitter<void>();
   // 创建一个删除输出事件
   @Output() onDel = new EventEmitter<void>();
+
+  @Output() onSelected = new EventEmitter<void>();
 
   // 2 绑定触发器 @card, 并为状态 cardState 赋初始值
   @HostBinding('@card') cardState = 'out';
@@ -47,22 +48,29 @@ export class ProjectItemComponent implements OnInit {
   }
 
 
-  onInviteClick() {
+  onInviteClick(ev: Event) {
+    ev.stopPropagation();
     // 将事件发射出去，让父组件知道。
     this.onInvite.emit();
 
   }
 
-  onEditClick() {
+  onEditClick(ev: Event) {
+    ev.stopPropagation();
     // 将事件发射出去，让父组件知道。
     this.onEdit.emit();
   }
 
   // 项目删除按钮点击事件执行方法
-  onDelClick() {
+  onDelClick(ev: Event) {
+    ev.stopPropagation();
     // 发射出点击输出属性
     this.onDel.emit();
 
+  }
+
+  onClick() {
+    this.onSelected.emit();
   }
 }
 

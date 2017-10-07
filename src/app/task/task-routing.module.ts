@@ -4,7 +4,7 @@ import {TaskHomeComponent} from './task-home/task-home.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'taskList', pathMatch: 'full'},
-  {path: 'taskList', component: TaskHomeComponent}
+  {path: 'taskList/:id', component: TaskHomeComponent}
 ];
 
 @NgModule({

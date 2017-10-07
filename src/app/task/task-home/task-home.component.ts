@@ -5,6 +5,12 @@ import {CopyTaskComponent} from '../copy-task/copy-task.component';
 import {ConfirmDialogComponent} from '../../shared/confirm-dialog/confirm-dialog.component';
 import {NewTaskListComponent} from '../new-task-list/new-task-list.component';
 import {slideToRight} from '../../anims/router.anim';
+import * as fromRoot from '../../reducers/index';
+import {Store} from '@ngrx/store';
+import {ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
+import {TaskList} from '../../domain/task-list.model';
+import * as actions from '../../actions/task-list.action';
 
 @Component({
   selector: 'app-task-home',
@@ -18,120 +24,18 @@ import {slideToRight} from '../../anims/router.anim';
 export class TaskHomeComponent implements OnInit {
 
   // @HostBinding('@routeAnim') state;
+  projectId$: Observable<string>;
+  lists$: Observable<TaskList>;
 
-  lists = [
-    {
-      id: 1,
-      name: '待办',
-      order: 1,
-      tasks: [
-        {
-          id: 1,
-          desc: '任务一：去星巴克迈杯咖啡哇哈哈',
-          completed: true,
-          priority: 1,
-          owner: {
-            id: 1,
-            name: '张三',
-            avatar: 'avatars:svg-11'
-          },
-          dueDate: new Date(),
-          reminder: new Date(),
-        },
-        {
-          id: 1,
-          desc: '任务一：去星巴克迈杯咖啡哇哈哈',
-          completed: true,
-          priority: 1,
-          owner: {
-            id: 1,
-            name: '张三',
-            avatar: 'avatars:svg-11'
-          },
-          dueDate: new Date(),
-          reminder: new Date(),
-        },
-        {
-          id: 1,
-          desc: '任务一：去星巴克迈杯咖啡哇哈哈',
-          completed: true,
-          priority: 1,
-          owner: {
-            id: 1,
-            name: '张三',
-            avatar: 'avatars:svg-11'
-          },
-          dueDate: new Date(),
-          reminder: new Date(),
-        },
-
-        {
-          id: 1,
-          desc: '任务三：去星巴克迈杯咖啡',
-          completed: false,
-          priority: 3,
-          owner: {
-            id: 1,
-            name: '张三',
-            avatar: 'avatars:svg-13'
-          },
-          dueDate: new Date(),
-        },
-
-      ],
-    },
-    {
-      id: 1,
-      name: '进行中',
-      order: 2,
-      tasks: [
-        {
-          id: 1,
-          desc: '任务一：去星巴克迈杯咖啡',
-          completed: false,
-          priority: 1,
-
-          owner: {
-            id: 1,
-            name: '张三',
-            avatar: 'avatars:svg-14'
-          },
-          dueDate: new Date(),
-          reminder: new Date(),
-        },
-        {
-          id: 1,
-          desc: '任务二：去星巴克迈杯咖啡',
-          completed: false,
-          priority: 2,
-          owner: {
-            id: 1,
-            name: '张三',
-            avatar: 'avatars:svg-15'
-          },
-          dueDate: new Date(),
-          reminder: new Date(),
-        },
-        {
-          id: 1,
-          desc: '任务三：去星巴克迈杯咖啡',
-          completed: false,
-          priority: 1,
-          owner: {
-            id: 1,
-            name: '张三',
-            avatar: 'avatars:svg-16'
-          },
-          dueDate: new Date(),
-          reminder: new Date(),
-        },
-
-      ],
-    },
-  ];
 
   // 注入一个对话框dialog
-  constructor(private dialog: MdDialog) {
+  constructor(
+    private dialog: MdDialog,
+    private store$: Store<fromRoot.State>,
+    private route$: ActivatedRoute,
+  ) {
+    this.projectId$ = this.route$.paramMap.pluck('id');
+    this.lists$ = this.store$.select(fromRoot.getTaskLists);
   }
 
   ngOnInit() {
@@ -148,7 +52,7 @@ export class TaskHomeComponent implements OnInit {
 
   launchCopyTaskDialog() {
     // 打开新任务对话框组件。在此之前需要将NewTaskComponent组件在Task模块中，加入
-    const dialogRef = this.dialog.open(CopyTaskComponent, {data: {lists: this.lists}});
+    // const dialogRef = this.dialog.open(CopyTaskComponent, {data: {lists: this.lists}});
 
   }
 
@@ -157,7 +61,7 @@ export class TaskHomeComponent implements OnInit {
   }
 
   // 监听到删除任务列表输出属性后，执行此方法， 打开ConfirmDialogComponent组件窗口
-  launchConfirmDialog(list) {
+  launchConfirmDialog(list: TaskList) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
         title: '删除任务',
@@ -165,18 +69,24 @@ export class TaskHomeComponent implements OnInit {
         list: list
       }
     });
-    dialogRef.afterClosed().subscribe(result => console.log(result));
+    dialogRef.afterClosed()
+      .take(1)
+      .filter(n => n)
+      .subscribe(result => this.store$.dispatch(new actions.DeleteTaskListAction(list)));
   }
 
   launchEditListDialog(list) {
-    const dialogRef = this.dialog.open(NewTaskListComponent, {data: {title: '修改任务列表名称', list: list}});
-    dialogRef.afterClosed().subscribe(result => console.log(result));
+    const dialogRef = this.dialog.open(NewTaskListComponent, {data: {title: '修改任务列表名称', taskList: list}});
+    dialogRef.afterClosed()
+      .take(1)
+      .filter(n => n)
+      .subscribe(result => this.store$.dispatch(new actions.UpdateTaskListAction({...result, id: list.id})));
   }
 
   // 新建任务列表
-  launchNewListDialog() {
+  launchNewListDialog(ev: Event) {
     const dialogRef = this.dialog.open(NewTaskListComponent, {data: {title: '新建任务列表名称'}});
-    dialogRef.afterClosed().subscribe(result => console.log(result));
+    dialogRef.afterClosed().subscribe(result => this.store$.dispatch(new actions.AddTaskListAction(result)));
   }
 
   handleMove(srcData, list) {

@@ -14,6 +14,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import * as fromQuote from './quote.reducer';
 import * as fromAuth from './auth.reducer';
 import * as fromProject from './project.reducer';
+import * as fromTaskList from './task-list.reducer';
 
 import { compose } from '@ngrx/core/compose';
 /**
@@ -33,6 +34,7 @@ export interface State {
   quote: fromQuote.State;
   auth: Auth;
   project: fromProject.State;
+  taskList: fromTaskList.State;
 }
 
 // 全局的初始值， 所有state的初始值
@@ -40,6 +42,8 @@ const initialState: State = {
   quote: fromQuote.initialState,
   auth: fromAuth.initialState,
   project: fromProject.initialState,
+  taskList: fromTaskList.initialState,
+
 
 };
 
@@ -48,6 +52,7 @@ const reducers = {
   quote: fromQuote.reducer,
   auth: fromAuth.reducer,
   project: fromProject.reducer,
+  taskList: fromTaskList.reducer,
 };
 
 /**
@@ -66,10 +71,12 @@ export function reducer(state = initialState, action: any ): State {
 export const getAuthState = (state: State) => state.auth;
 export const getQuoteState = (state: State) => state.quote;
 export const getProjectState = (state: State) => state.project;
+export const getTaskListState = (state: State) => state.taskList;
 
 // 除了最后一个，其它的都是输入型参数。当成最后一个函数的参数，
 export const getQuote = createSelector(getQuoteState, fromQuote.getQuote);
 export const getProjects = createSelector(getProjectState, fromProject.getAll);
+export const getTaskLists = createSelector(getTaskListState, fromTaskList.getTaskLists);
 
 
 @NgModule({

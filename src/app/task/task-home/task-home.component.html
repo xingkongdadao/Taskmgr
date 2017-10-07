@@ -12,7 +12,7 @@
     [dragData]="list"
     (dropped)="handleMove($event, list)"
     [ngStyle]="{'order': list.order}"
-    *ngFor="let list of lists">
+    *ngFor="let list of lists$ | async">
     <!--任务列表题头-->
     <!--监听task-header组件发出的事件属性，并用launchNewTaskDialog()对事件作出响应-->
     <!--监听task-header组件发出的事件属性，并用launchCopyTaskDialog()对事件作出响应-->
@@ -39,6 +39,6 @@
 <!--新建任务按钮，
 该按钮是独立于任务列表的，单独放置在屏幕右下方
 -->
-<button class="fab-button" md-fab type="button" (click)="launchNewListDialog()">
+<button class="fab-button" md-fab type="button" (click)="launchNewListDialog($event)">
   <md-icon>add</md-icon>
 </button>

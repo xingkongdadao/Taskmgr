@@ -1,5 +1,5 @@
 <!--项目卡片，-->
-<md-card>
+<md-card (click)="onClick()">
   <!--项目标题头-->
   <md-card-header>
     <md-card-title>
@@ -13,16 +13,16 @@
   </md-card-content>
   <!--项目动作区域-->
   <md-card-actions>
-    <button md-button="" type="button" (click)="onEditClick()">
+    <button md-button="" type="button" (click)="onEditClick($event)">
       <md-icon>note</md-icon>
       <span>编辑</span>
     </button>
     <!--添加邀请事件方法-->
-    <button md-button="" type="button" (click)="onInviteClick()">
+    <button md-button="" type="button" (click)="onInviteClick($event)">
       <md-icon>group_add</md-icon>
       <span>邀请</span>
     </button>
-    <button md-button="" type="button" (click)="onDelClick()">
+    <button md-button="" type="button" (click)="onDelClick($event)">
       <md-icon>delete</md-icon>
       <span>删除</span>
     </button>

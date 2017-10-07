@@ -1,13 +1,13 @@
-<form>
+<form [formGroup]="form" (ngSubmit)="onSubmit(form, $event)">
   <h3 md-dialog-title>{{title}}</h3>
   <div md-dialog-content>
     <md-input-container class="full-width">
-      <input type="text" mdInput placeholder="任务列表名称">
+      <input type="text" mdInput placeholder="任务列表名称" formControlName="name">
     </md-input-container>
   </div>
   <div md-dialog-actions>
     <!--书写onClick（）事件，处理窗口数据-->
-    <button type="button" md-raised-button color="primary" (click)="onClick()">保存</button>
+    <button type="submit" md-raised-button color="primary" [disabled]="!form.valid">保存</button>
     <button type="button" md-button md-dialog-close>取消</button>
   </div>
 
